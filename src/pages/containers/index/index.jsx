@@ -1,15 +1,18 @@
 import React, {PureComponent} from 'react';
 import {Link} from "react-router-dom";
-import { connect } from "react-redux";
-import * as action from 'src/pages/action/home'
+import * as common from 'src/pages/action/home'
 import ajax from 'src/utils/api'
+import connect from 'src/pages/action/common'
 
+
+@connect(common)
 class index extends PureComponent {
     constructor(props){
         super(props);
         this.state = {};
     }
     componentWillMount() {
+        console.log(this.props)
     }
     getList() {
         ajax({
@@ -31,7 +34,7 @@ class index extends PureComponent {
                 跳转到用户中心页面
                 </Link>
                 <div>
-                    <p>数值：{this.props.price}</p>
+                    <p>数值：{this.props.market}</p>
                 </div>
                 <button onClick={PriceIncrease}>物价上涨</button>
                 <button onClick={PriceDecrease}>物价下跌</button>
@@ -42,21 +45,4 @@ class index extends PureComponent {
         )
     }
 } 
-
-//获取指定state数据
-function mapStateToProps(state) {
-    return {
-        price: state.market
-    }
-}
-
-//触发action
-function mapDispatchToProps(dispatch) {
-    return {
-        PriceIncrease: () => dispatch(action.getListDataAction()),
-        PriceDecrease: () => dispatch({ type: '降价' }),
-    }
-}
-
-
-export default index = connect(mapStateToProps, mapDispatchToProps)(index);
+export default index;

@@ -8,7 +8,9 @@ export default class index extends PureComponent {
           
         }
     }
-    componentWillMount() {}
+    componentWillMount() {
+        console.log(this.props)
+    }
     render() {
         return (
             <div className="g-default">

@@ -6,7 +6,7 @@ const market = (state = price, action) => {
     switch (action.type) {
         case  home.MARKET_TYPE_INCREASE:
             return state += 10;
-        case '降价':
+        case  home.MARKET_TYPE_DECREASE:
             return state -= 10;
         default:
             return state;
